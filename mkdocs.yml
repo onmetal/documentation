@@ -1,0 +1,18 @@
+site_name: On Metal
+repo_url: https://github.com/onmetal/onmetal/
+edit_uri: edit/main/docs/
+theme:
+  name: material
+  palette:
+    primary: teal
+  font:
+    text: 'Work Sans'
+
+plugins:
+- search
+
+markdown_extensions:
+- codehilite
+- admonition
+- toc:
+    permalink: true
