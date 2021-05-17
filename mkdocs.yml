@@ -1,5 +1,5 @@
 site_name: On Metal
-repo_url: https://github.com/onmetal/onmetal/
+repo_url: https://github.com/onmetal/onmetal.github.io/
 edit_uri: edit/main/docs/
 theme:
   name: material
