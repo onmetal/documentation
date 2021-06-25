@@ -1,4 +1,4 @@
-FROM squidfunk/mkdocs-material:7.1.8
+FROM squidfunk/mkdocs-material:7.1.9
 
 LABEL project=onmetal_documentation
 
