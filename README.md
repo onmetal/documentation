@@ -1,6 +1,6 @@
-# onmetal
+# Gardener on Metal Documentation
 
-OnMetal Documentation Project
+This project is the main entrypoint for the Gardener on Metal documentation.
 
 ## Local development
 
@@ -9,13 +9,13 @@ to start a Docker container using the current repository content. Hot-reloading 
 so there is no need to restart the container after you made some changes.
 
 ```bash
-make start-local-docker
+make start
 ```
 
 Stopped container instances can be cleaned up via
 
 ```bash
-make clean-stopped-docker-container
+make clean
 ```
 
 ## Contribution guide
