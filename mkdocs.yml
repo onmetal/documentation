@@ -32,3 +32,14 @@ markdown_extensions:
   - abbr
   - toc:
       permalink: true
+
+nav:
+  - Home: index.md
+  - Components:
+    - Virtualization: 
+      - Overview: components/virtualization/Overview.md
+      - Installation: components/virtualization/HowToDeploy.md
+    - Harbor:
+      - Installation: components/harbor/chart_museum.md
+      - Usage: components/harbor/docker_registry.md
+    - Virtual Controlplane: https://onmetal.github.io/virtual-controlplane/
