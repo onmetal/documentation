@@ -7,8 +7,7 @@ Gardener on Metal aims to be the best deployment target for Cloud Native Applica
 If your application runs with Kubernetes and you want to deploy it on your own hardware,
 Gardener on Metal is your IaaS provider of choice!
 
-
-We love Kubernetes! 
+We love Kubernetes!
 Every part of the phyiscal infrastructure is managed using Kubernetes: Servers, Switches, Routers, NICs.
 By using Kubernetes as the control plane for compute, network, storage and applications you can reduce the complexity of your technology stack significantly.
 If your SREs already know how to manage applications with Kubernetes they will quite fast get the hang of a Kubernetes managed cloud infrastructure.
@@ -24,7 +23,7 @@ Gardener on Metal provides different infrastructure components you already know 
 - NAT Gateways
 - ...
 
-> Gardener on Metal is not a new Open Stack. 
+> Gardener on Metal is not a new Open Stack.
 The target of Gardener on Metal is not to virtualize or consolidate your existing on-prem infrastructure,
 but to be a slim deployment target for your cloud native workload. This allows us to use some short-cuts.
 For example onmetal's virtual networks have no support for Layer 2 Ethernet broadcasts. Instead the networks are
@@ -46,7 +45,7 @@ should be easily portable to ARM64 (AArch64) or RISC-V processors. This is on ou
 deadline, yet.
 
 ## Network
-The whole network control plane is part of Gardener on Metal. 
+The whole network control plane is part of Gardener on Metal.
 All physical network switches are part of a Kubernetes infrastructure cluster. We use Kubernetes operators for configuring and monitoring the switches.
 - The Switch OS is [SONiC](https://azure.github.io/SONiC/) - an open source network operating system initially
 developed by Microsoft. Nowadays a lot of different switch vendors contribute to SONiC.
