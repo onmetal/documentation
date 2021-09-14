@@ -7,6 +7,7 @@ Gardener on Metal aims to be the best deployment target for Cloud Native Applica
 If your application runs with Kubernetes and you want to deploy it on your own hardware,
 Gardener on Metal is your IaaS provider of choice!
 
+
 We love Kubernetes! 
 Every part of the phyiscal infrastructure is managed using Kubernetes: Servers, Switches, Routers, NICs. 
 By using Kubernetes as the control plane for compute, network, storage and applications you can reduce the complexity of your technology stack significantly. 
