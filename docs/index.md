@@ -13,6 +13,7 @@ By using Kubernetes as the control plane for compute, network, storage and appli
 If your SREs already know how to manage applications with Kubernetes they will quite fast get the hang of a Kubernetes managed cloud infrastructure.
 
 Gardener on Metal provides different infrastructure components you already know from hyperscalers:
+
 - Kubernetes Clusters ([Gardener](https://gardener.cloud/) managed)
 - Bare Metal Machines
 - Virtual Machines
