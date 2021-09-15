@@ -30,7 +30,7 @@ Layer 3 only. This means all traffic between the instances is routed. The infras
 manage IP to MAC address resolutions, caching and cache invalidation. There is no need to care about multiplying
 packets of broadcasts, which could lead to micro-congestions and noisy-neighbor issues anymore.
 
-### Gardener on Metal does not support live migration of VMs.
+### Gardener on Metal does not support live migration of VMs
 Instead a cloud native application follows the cloud native principle, that single service instances are not handled like
 pets but like cattle. This means that any part of a Cloud Native Application may be terminated without impact of service
 availability. Instead of live migration, Gardener on Metal sends SIGKILL signals to the application so it can be removed
