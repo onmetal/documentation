@@ -22,7 +22,7 @@ Gardener on Metal provides different infrastructure components you already know 
 - Load Balancers
 - NAT Gateways
 
-### Gardener on Metal is not a new Open Stack.
+### Gardener on Metal is not a new Open Stack
 The target of Gardener on Metal is not to virtualize or consolidate your existing on-prem infrastructure,
 but to be a slim deployment target for your cloud native workload. This allows us to use some short-cuts.
 For example onmetal's virtual networks have no support for Layer 2 Ethernet broadcasts. Instead the networks are
