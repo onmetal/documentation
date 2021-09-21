@@ -37,8 +37,8 @@ nav:
   - Home: index.md
   - Components:
     - Virtualization: 
-      - Overview: components/virtualization/Overview.md
-      - Installation: components/virtualization/HowToDeploy.md
+      - Overview: components/virtualization/overview.md
+      - Installation: components/virtualization/usage.md
     - Harbor:
       - Installation: components/harbor/chart_museum.md
       - Usage: components/harbor/docker_registry.md

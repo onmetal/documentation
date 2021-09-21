@@ -11,25 +11,14 @@ This document walks through how to deploy the virtualization stack on a baremeta
 ## At a glance
 
 - Virt-on-metal is a system to manage virtual machines at scale in a cloud-native fashion.
-- It uses kubernetes premitives such as CRDS for VM management, libvirt as a base virtualization technology, MPLS tunnels for networking, and DHCP for IP assignment.
+- It uses kubernetes premitives such as CRDS for VM management, libvirt as a base virtualization technology, MPLS tunnels for networking, and DHCP for IP assignment and iPXE boot.
 - VMs are currently boot-up with PXE mechanism, and it plans to also support disk-based boot-up.
 
 ## Steps
 
-### 1. Deploy DHCP Server
+### Install Kubernetes using kubeadm
 
-```bash
-    docker build -t kea-dhcp4:1.9.8 --network=host  .
-    docker run -v /root/kea-docker/kea-dhcp4-conf:/etc/kea --network host --name kea-dhcp4   kea-dhcp4:1.9.8
-
-```
-
-- Configuration of the DHCP Server with 5 sample virtual machines. Preferably a link to the private repo/page.
-- @TODO: Tao
-
-### 2. Install Kubernetes using kubeadm
-
-- Disable swap and install kubeadm . This will be the kubernetes without kube-proxy using cilium plugin. @TODO: Tao (add networking related reason to avoid kube-proxy, eg it adds IPTables that violates the MPLS tunnel's job ?)
+- Disable swap and install kubeadm . This will be the kubernetes without kube-proxy using cilium plugin, which is capable of enabling network management in a more efficient way.
 
 ```bash
     Swapoff -a
@@ -65,7 +54,7 @@ At cilium-agent command, add following extra args:
 kubectl taint nodes compute-4 func=nat:NoSchedule
 ```
 
-### 3. Install libvirt daemon
+### Install libvirt daemon
 
 - Install libvirt on compute-2, and compute-3. Compute-2 and Compute-3 will be the kubernetes nodes, where Virtual Machines will be spawned.
 
@@ -73,7 +62,7 @@ kubectl taint nodes compute-4 func=nat:NoSchedule
 sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
 ```
 
-### 4. Deploy VMlet controller
+### Deploy VMlet controller
 
 - Deploy the kubeconfig secret and daemonset in the kubernetes cluster.
 
@@ -83,15 +72,43 @@ kubectl apply -f https://github.com/onmetal/vmlet/blob/main/config/manager/manag
 
 ```
 
-### 5. Deploy VNet-controller
+### Deploy NAT controller
 
-- @TODO Tao
+The NAT controller is responsible of creating NAT on the server being tainted with "func=NAT". It is mainly responsable of using network namespace to create snat for VMs with the same virtual network ID. Additonally, it initialises MPLS tunnels with routers so that packets that are natted can be sent to routers.
 
-### 6. Deploy NAT controller
+```bash
+kubectl apply -f https://github.com/onmetal/virtualisation-benchmark/blob/main/mpls-nat-operator.yaml
 
-- @TODO: Tao
+```
 
-### 7. Deploy VM-scheduler
+After executing the above command, a network namespace named nat-100, a VRF named vrf-100 will be created. Corresponding default and MPLS routing rules will be inserted automatically.
+
+### Deploy DHCP Server
+
+The configuration of private DHCP server is not automated. A dedicated VM needs to be spinned up to host the Kea DHCP server on the node serving as NAT. At this stage, it is reconmmended to use a prebuilt qcow2 image to avoid installation of kea and writing dhcp configuration files.
+This VM has to be manually attached to VRF that was created in the previous step, and routing rule pointing to this VM has to be added. Assuming this VM uses the IP address, 10.1.1.2, and its tap has the name, tap111996580, the following commands shall be executed:
+
+```bash
+    ip link set tap111996580 master vrf-100 
+    ip route add 10.1.1.2/32 dev tap111996580 vrf vrf-100
+```
+
+Inside this DHCP VM, assuming the prebuilt qcow2 is used to boot it up, the configuration file containing the subnet and VMs' IP address information has to be adapted. If the Kea docker image does not exist, the Dockerfile can be used to build a local image.
+
+```bash
+    docker build -t kea-dhcp4:1.9.8 --network=host  .
+    docker run -v [-d] /root/kea-docker/kea-dhcp4-conf:/etc/kea --network host --name kea-dhcp4   kea-dhcp4:1.9.8
+```
+
+### Deploy VNet-controller
+
+VNet-controller is deployed on each worker machine that hosts VMs. Its main task is to provide a configured TAP for VM, and corresponding routing rules. It is also responsable for starting isc-dhcp-relay to support iPXE booting.
+
+```bash
+k apply -f https://github.com/onmetal/virtualisation-benchmark/blob/main/mpls-tun-operator.yaml
+```
+
+### Deploy VM-scheduler
 
 - Deploy vm-scheduler deployment.
 
@@ -99,7 +116,7 @@ kubectl apply -f https://github.com/onmetal/vmlet/blob/main/config/manager/manag
 k apply -f https://github.com/onmetal/vm-scheduler/blob/main/config/manager/manager.yaml
 ```
 
-### 8. Create First Virtual Machine
+### Create First Virtual Machine
 
 - Use following configuration to create the first virtual machine.
 - @TODO Hardik Tao, this depends on how we configure the IP range in DHCP server etc.
