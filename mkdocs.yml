@@ -35,6 +35,8 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Concepts:
+    - Networking: concepts/networking.md
   - Components:
     - Virtualization: 
       - Overview: components/virtualization/overview.md
