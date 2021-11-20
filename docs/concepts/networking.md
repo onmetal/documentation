@@ -1,3 +1,0 @@
-# Networking
-
-Something about networking goes here ...

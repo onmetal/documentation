@@ -36,7 +36,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Concepts:
-    - Networking: concepts/networking.md
+    - Network:
+      - Routing: concepts/network/routing.md
   - Components:
     - Virtualization: 
       - Overview: components/virtualization/overview.md
