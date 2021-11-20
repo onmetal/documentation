@@ -12,11 +12,11 @@ By removing Ethernet networks from Gardener on Metal we save lots of complexity 
 
     # ip route show
     default via 169.254.0.1 dev eno0 proto dhcp src 233.252.0.103 metric 1024
-    169.254.0.1/32 dev eth0 proto dhcp scope link src 233.252.0.103 metric 1024
+    169.254.0.1/32 dev eno0 proto dhcp scope link src 233.252.0.103 metric 1024
 
     # ip -6 route show
     default via fe80::1 dev eno0 proto dhcpv6 src 2001:db8::1 metric 256 pref medium
-    fe80::/64 dev eno1 proto kernel metric 256 pref medium
+    fe80::/64 dev eno0 proto kernel metric 256 pref medium
 
 We reduce complexity and also increase resiliency a lot by avoiding BUM traffic.
 
