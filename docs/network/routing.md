@@ -7,9 +7,9 @@ Every VNet has one routing table. A VNet is identified by a 24 bit Virtual Netwo
 ### IPv4 vs. IPv6
 
 Gardener on Metal's underlay network is an IPv6-only network. The overlay network supports IPv4/IPv6 dual stack.
-In this document mostly IPv4 addresses are used for the overlay. If nothing different is mentioned, the same techniques apply to IPv6 in the overlay!
+In this document mostly IPv4 addresses are used for the overlay. If nothing different is mentioned, the same techniques apply also to IPv6!
 
-Szenarios
+Scenarios
 ---------
 ### Routing within a customer network
 

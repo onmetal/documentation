@@ -37,6 +37,7 @@ nav:
   - Home: index.md
   - API: api/api.md
   - Network:
+    - Encapsulation: network/encapsulation.md
     - Routing: network/routing.md
   - Components:
     - Virtualization: 
