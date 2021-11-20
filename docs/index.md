@@ -23,6 +23,15 @@ Gardener on Metal provides different infrastructure components you already know 
 - Load Balancers
 - NAT Gateways
 
+### Priorities
+
+1. Stability & Resiliency
+2. Security
+3. Innovation
+4. Technical Debt
+
+Gardener on Metal focuses on providing a stable and secure infrastructure. This does not always work with seasoned approaches. Here the innovation comes in! We have to evaluate existing technologies and think about, does it maybe make sense to create something new to reach our stability and security goals?
+
 ### Gardener on Metal is not a new Open Stack
 The target of Gardener on Metal is not to virtualize or consolidate your existing on-prem infrastructure,
 but to be a slim deployment target for your cloud native workload. This allows us to use some short-cuts.
