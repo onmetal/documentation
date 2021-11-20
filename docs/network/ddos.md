@@ -56,7 +56,7 @@ You can also let your application care about DDoS protection. Maybe they need a 
 
 Layer 7 CDN / WAF combinations also come with a few other niceties. They do TLS offloading near the edge, accelerate static content delivery using caches or can detect and filter out SQL injections.
 
-Be careful, Layer 7 services can be even more expensive than scrubbing centers - but usually the costs scale pretty nice with the services' workload!
+Be careful, Layer 7 services can be even more expensive than scrubbing centers - but usually the costs scale pretty nice with your services' traffic!
 
 Here are a few Layer 7 CDN/WAF services in alphabetical order:
 
