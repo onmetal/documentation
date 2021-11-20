@@ -1,5 +1,7 @@
-Introduction
-------------
+# Routing
+
+## Introduction
+
 ### VNet
 
 Every VNet has one routing table. A VNet is identified by a 24 bit Virtual Network Identifier (VNI). A VNet can have multiple subnets.

@@ -1,3 +1,5 @@
+# Idea
+
 Gardener on Metal provides an infrastructure to run Cloud Native Applications. Multiple tenants should use this infrastructure in a secure way. They should not interfere with each others' workload. Noisy neighbor disturbances should be avoided as best as possible.
 
 ### IPv4 & IPv6
