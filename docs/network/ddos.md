@@ -1,7 +1,7 @@
 # DDoS Protection
 
 When running commercial services on your infrastructure a good DDoS protection saves you a lot of money - or you spend a lot of money, as commercial DDoS protection solutions come at a high price.
-We do not want to go into the cost details here. Instead we want to provide information about the different types of DDoS protection and how to implement them.
+We do not want to go into the cost details here. Instead we want to provide an overview over the different types of DDoS protection and how to implement them.
 
 ## Blackholing
 
@@ -52,11 +52,11 @@ Here are a few scrubbing services in alphabetical order:
 
 ## Layer 7 Cloud Firewalls / CDNs
 
-You can also let your application care about DDoS protection. Maybe they need a CDN anyways? Then a valid approach could also be to just say: Hey, all applications need to use a Cloud CDN or WAF. Every service that gets DDoSed will otherwise be blackholed!
+You can also let your application care about DDoS protection. Maybe they need a CDN anyways? Then a valid approach could also be to just say: *"Hey, all applications need to use a Cloud CDN or WAF. Every service that gets DDoSed will otherwise be blackholed!"*
 
-Layer 7 CDN / WAF combinations also come with a few other niceties. They do TLS offloading near the edge, accelerate static content using caches or can detect and filter our SQL injections.
+Layer 7 CDN / WAF combinations also come with a few other niceties. They do TLS offloading near the edge, accelerate static content delivery using caches or can detect and filter our SQL injections.
 
-Be careful, Layer 7 services can be even more expensive than scrubbing centers - but usually the costs scale pretty nice with the service's workload!
+Be careful, Layer 7 services can be even more expensive than scrubbing centers - but usually the costs scale pretty nice with the services' workload!
 
 Here are a few Layer 7 CDN/WAF services in alphabetical order:
 
