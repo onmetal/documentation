@@ -115,10 +115,3 @@ And the routing table of VNet 47 looks like this:
 |  172.16.0.3/32 |  47 | 2001:db8:f3:1:: | FRA3 |    100 |                       |
 | 192.168.0.2/32 |  47 | 2001:db8:f3:6:: | FRA3 |    100 |                       |
 
-
-Control Plane Design
---------------------
-
-### Requirements
-
-* If a node loses connection, the routes must be removed from the system. A simple Kafka Queue does not do this. BGP removes all routes from the routing table, when a peer, that the routes were received from, disconnects.
