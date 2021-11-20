@@ -52,9 +52,9 @@ Here are a few scrubbing services in alphabetical order:
 
 ## Layer 7 Cloud Firewalls / CDNs
 
-You can also let your application care about DDoS protection. Maybe they need a CDN anyways? Then a valid approach could also be to just say: *"Hey, all applications need to use a Cloud CDN or WAF. Every service that gets DDoSed will otherwise be blackholed!"*
+You can also let your application care about DDoS protection. Maybe they need a CDN anyways? Then a valid approach could also be to just say: *"Hey, all applications need to use a Cloud CDN or WAF. Every service that gets DDoSed will otherwise be blackholed!"* - If you are a small service provider this is probably the best strategy to get started. Implementing a Layer 7 CDN/WAF is quite easy and you do not have to talk to any sales person.
 
-Layer 7 CDN / WAF combinations also come with a few other niceties. They do TLS offloading near the edge, accelerate static content delivery using caches or can detect and filter our SQL injections.
+Layer 7 CDN / WAF combinations also come with a few other niceties. They do TLS offloading near the edge, accelerate static content delivery using caches or can detect and filter out SQL injections.
 
 Be careful, Layer 7 services can be even more expensive than scrubbing centers - but usually the costs scale pretty nice with the services' workload!
 
