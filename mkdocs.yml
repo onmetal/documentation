@@ -39,6 +39,7 @@ nav:
     - Idea: compute/idea.md
     - Hardware onboarding: compute/onboarding.md
     - OOB Management: compute/oob.md
+    - Virtualization: compute/virtualization.md
   - Network:
     - Idea: network/idea.md
     - Encapsulation: network/encapsulation.md
@@ -46,11 +47,11 @@ nav:
     - NIC Offloading: network/nics.md
   - Storage: storage.md
   - API: api/api.md
-  - Components:
+  - Operations Manual:
+    - Introduction: manual/intro.md
     - Virtualization:
-      - Overview: components/virtualization/overview.md
-      - Installation: components/virtualization/usage.md
+      - Installation: manual/virtualization/usage.md
     - Harbor:
-      - Installation: components/harbor/chart_museum.md
-      - Usage: components/harbor/docker_registry.md
+      - Installation: manual/harbor/chart_museum.md
+      - Usage: manual/harbor/docker_registry.md
     - Virtual Controlplane: https://onmetal.github.io/virtual-controlplane/
