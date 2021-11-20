@@ -1,6 +1,7 @@
 Introduction
 ------------
 
+
 Geneve
 ------
 Geneve, the Generic Network Virtualization Encapsulation is defined in [RFC8926](https://datatracker.ietf.org/doc/html/rfc8926).
@@ -102,7 +103,9 @@ Geneve, the Generic Network Virtualization Encapsulation is defined in [RFC8926]
 SRv6
 ----
 The IPv6 Segment Routing Header (SRH) is defined in [RFC8754](https://datatracker.ietf.org/doc/html/rfc8754).
-The SRH is defined as follows:
+You can find more information about SRv6 at https://www.segment-routing.net and in [this slide deck](https://www.segment-routing.net/images/201901-SRv6.pdf).
+
+An SRv6 encapsulated IPv4 packet typically looks like this:
 
        0                   1                   2                   3
        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1

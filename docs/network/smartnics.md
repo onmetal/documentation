@@ -1,0 +1,3 @@
+For bare metal deployments Gardener on Metal requires NICs, that have their own little operating system on board and can be isolated from the host system. Often those NICs are called SmartNICs or DPUs (intel calls them IPUs). A typical, widely available SmartNIC is the NVIDIA Bluefield-2.
+
+For VM deployments a modern NIC with DPDK capabilities is required. A broad set of hardware offloading capabilities is recommended. Good candidates are NVIDIA ConnectX-6 Dx or intel E810.
