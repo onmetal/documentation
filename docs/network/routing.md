@@ -29,17 +29,17 @@ Szenarios
 `VM A.1` sends a ping request to `VM A.2`. This ping packet has an IPv4 header with `src IPv4: 10.0.0.1` and `dst IPv4: 10.0.0.2`.
 The network hypervisor on `SRV C5.FRA3`, where `VM A.1` is running on, will encapsulate the packet. The encapsulation header will hold the following information: `dst IPv6: 2001:db8:f3:6::`, `VNI: 10`, `Protocol: 0x0800 (IPv4)`. In case of SRv6 encapsulation the VNI (10 = 0xa) would move into the dst IPv6 address: `SRv6 segment: 2001:db8:f3:6:a::`. The SRv6 segment address is provided via the routing control plane and MUST NOT be calculated by the packet's sender using the Host IP and VNI.
 
-This is the simplest scenario of routing. To collect the information needed for encapsulating the packet, the hypervisor needs to receive all routes and all route updates of VNI 10. As soon as a new machine is joining VNI 10 or a machine gets terminated, route updates must be delivered to all hypervisors, that host VMs connected to VNI 10. This can be done via Kubernetes watches or, more performant, using a PubSub mechanism, that provides a queue per VNI. Route Updates will be published via this queue to all subscribers.
-Using the route updates the hypervisor is able to create a routing table for VNI 10. The hypervisor will do longest prefix matching (LPM) for the target IP of the outgoing packet (here `10.0.0.2`) in the VM's respective VNI context.
+This is the simplest scenario of routing. To collect the information needed for encapsulating the packet, the hypervisor needs to receive all routes and all route updates of VNet 10. As soon as a new machine is joining VNet 10 or a machine gets terminated, route updates must be delivered to all hypervisors, that host VMs connected to VNet 10. This can be done via Kubernetes watches or, more performant, using a PubSub mechanism, that provides a queue per VNI. Route Updates will be published via this queue to all subscribers.
+Using the route updates the hypervisor is able to create a routing table for VNet 10. The hypervisor will do longest prefix matching (LPM) for the target IP of the outgoing packet (here `10.0.0.2`) in the VM's respective VNI context.
 
 When `VM A.1` sends a ping to `VM A.3` in a different AZ, the same happens again. The underlay networks of different AZs of the same region are routed - and also the routing information in the overlay networks is shared. The hypervisor would simply send the encapsulated packet to `SRV C2.FRA4`, which is located in FRA4 AZ.
 
-Also, when a public IP is used as the destination IP, everything stays the same. Routing information of public endpoints, which reside in VNI 10, are distributed in the same way like private endpoints. When we look at IPv6, there are basically no "private" IP addresses anymore. Every IPv6 address is globally unique. But it is possible to not route them to the public internet - and by that make them "private".
+Also, when a public IP is used as the destination IP, everything stays the same. Routing information of public endpoints, which reside in VNet 10, are distributed in the same way like private endpoints. When we look at IPv6, there are basically no "private" IP addresses anymore. Every IPv6 address is globally unique. But it is possible to not route them to the public internet - and by that make them "private".
 
 
 ### Unequal Cost Multi Path - UCMP
 
-Two or more VMs may serve the same IP addresses. In this case there exist multiple routes for a given destination. Every route has a weight attached (0-255). According to the routes weight outgoing flows will be assigned to the routes. E.g. if we have to routes to `10.0.0.2/32`, one with weight 100 and the other with weight 50, the first route will get assigned to `100/(100+50) = 2/3` of the new flows and the second route will be used for `50/(100+50) = 1/3` of the flows.
+Two or more VMs may serve the same IP addresses. In this case there exist multiple routes for a given destination. Every route has a weight attached (0-255). According to the routes' weights outgoing flows will be assigned to the routes. E.g. if we have two routes to `10.0.0.2/32`, one with weight 100 and the other with weight 50, the first route will get assigned to `100/(100+50) = 2/3` of the new flows and the second route will be used for `50/(100+50) = 1/3` of the flows.
 
 
 ### Routing to the Internet
