@@ -40,7 +40,7 @@ nav:
     - Idea: network/idea.md
     - Encapsulation: network/encapsulation.md
     - Routing: network/routing.md
-    - SmartNICs: network/smartnics.md
+    - NIC Offloading: network/nics.md
   - Components:
     - Virtualization:
       - Overview: components/virtualization/overview.md
