@@ -45,6 +45,7 @@ nav:
     - Encapsulation: network/encapsulation.md
     - Routing: network/routing.md
     - NIC Offloading: network/nics.md
+    - Network Functions: network/networkfunctions.md
     - DDoS Protection: network/ddos.md
   - Storage: storage.md
   - API: api/api.md
