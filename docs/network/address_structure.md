@@ -1,6 +1,6 @@
 # IPv6 Address Structure
 
 A `/50` IPv6 prefix will be assigned to every *partition cluster* (e.g. `2001:db8:123:4000::/50`).
-Every node that is part of this cluster will get a `/64`. The topmost `/64` will be used as Kubernetes Service CIDR (here: `2001:db8:123:4fff::/64`). As a result the maximum number of servers a cluster can hold is `0xfff = 65535`. The Kubernetes Service address range must not be reachable from outside of the partition cluster.
+Every node that is part of this cluster will get a `/64`. The topmost `/64` will be used as Kubernetes Service CIDR (here: `2001:db8:123:4fff::/64`). As a result the maximum number of servers a cluster can hold is `0x3fff = 16383`. The Kubernetes Service address range must not be reachable from outside of the partition cluster.
 
 Nodes of a partition cluster can be hypervisor machines, that run in the underlay network or SmartNICs. Every node will get a `/64` IPv6 prefix assigned (e.g. `2001:db8:123:4001::/64`). The node's loopback device is configured with the first IP out of this range: `2001:db8:123:4001::/128`. The first 32 bits of the node's address range is used for SRv6 SIDs, using the range `0x1 - 0xffffffff` (here: `2001:db8:123:4001:0:1::/96 - 2001:db8:123:4001:ffff:ffff::/96`). Those prefixes will be routed to the VMs. VNI 0 is used for the Kernel itself. In our example `2001:db8:123:4001:0:0::/96` would be routed to the Kernel. The pod cidr is part of this range: `2001:db8:123:4001:0:0:1::/112` and allows to run 65536 pods per node (`2001:db8:123:4001:0:0:1:0 - 2001:db8:123:4001:0:0:1:ffff`).
