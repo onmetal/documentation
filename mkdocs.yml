@@ -42,6 +42,7 @@ nav:
     - Virtualization: compute/virtualization.md
   - Network:
     - Idea: network/idea.md
+    - Address Structure: network/address_structure.md
     - Encapsulation: network/encapsulation.md
     - Routing: network/routing.md
     - NIC Offloading: network/nics.md
