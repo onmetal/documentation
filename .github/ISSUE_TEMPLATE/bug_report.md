@@ -1,16 +1,22 @@
 ---
-name: Bug Report
-about: Report a bug
-labels: kind/bug
-
+name: Bug report 🐞
+about: Create a report to help us improve
+title: ''
+labels: bug
+assignees: ''
 ---
 
-**What happened**:
+**Describe the bug**
+A clear and concise description of what the bug is.
 
-**What you expected to happen**:
+**To Reproduce**
+Steps to reproduce the behavior e.g. provide example action definition.
 
-**How to reproduce it (as minimally and precisely as possible)**:
+**Expected behavior**
+A clear and concise description of what you expected to happen.
 
-**Anything else we need to know**:
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
 
-**Environment**:
+**Additional context**
+Add any other context about the problem here.

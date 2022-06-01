@@ -34,27 +34,38 @@ markdown_extensions:
       permalink: true
 
 nav:
-  - Home: index.md
-  - Compute:
-    - Idea: compute/idea.md
-    - Hardware onboarding: compute/onboarding.md
-    - OOB Management: compute/oob.md
-    - Virtualization: compute/virtualization.md
-  - Network:
-    - Idea: network/idea.md
-    - Address Structure: network/address_structure.md
-    - Encapsulation: network/encapsulation.md
-    - Routing: network/routing.md
-    - NIC Offloading: network/nics.md
-    - Network Functions: network/networkfunctions.md
-    - DDoS Protection: network/ddos.md
-  - Storage: storage.md
-  - API: api/api.md
-  - Operations Manual:
+  - Overview:
+    - Architecture: index.md
+    - Compute:
+        - Idea: compute/idea.md
+        - Hardware onboarding: compute/onboarding.md
+        - OOB Management: compute/oob.md
+        - Virtualization:
+          - Overview: compute/virtualization.md
+          - Installation: manual/virtualization/usage.md
+    - Networking:
+      - Idea: network/idea.md
+      - Address Structure: network/address_structure.md
+      - Encapsulation: network/encapsulation.md
+      - Routing: network/routing.md
+      - NIC Offloading: network/nics.md
+      - Network Functions: network/networkfunctions.md
+      - DDoS Protection: network/ddos.md
+    - Storage:
+      - Overview: index.md
+  - Components:
+    - onmetal-api: https://github.com/onmetal/onmetal-api
+  - Usage Guides:
+    - Cluster API: index.md
+    - CSI: index.md
+  - API References:
+    - onmetal-api: https://github.com/onmetal/onmetal-api/blob/main/docs/api-reference/overview.md
+  - Development:
+    - Local setup: index.md
+    - Contribution Guide: index.md
+    - Code of Conduct: index.md
+  - Installation and Administration:
     - Introduction: manual/intro.md
-    - Virtualization:
-      - Installation: manual/virtualization/usage.md
     - Harbor:
       - Installation: manual/harbor/chart_museum.md
       - Usage: manual/harbor/docker_registry.md
-    - Virtual Controlplane: https://onmetal.github.io/virtual-controlplane/
