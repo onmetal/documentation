@@ -16,7 +16,7 @@ jobs:
           python-version: 'pypy-3.6'
 
       - name: Deploy docs
-        uses: afritzler/mkdocs-gh-pages-action@main
+        uses: afritzler/mkdocs-gh-pages-action@v8.2.12
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
